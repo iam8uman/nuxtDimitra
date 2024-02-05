@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui'],
+  modules: ['@nuxt/ui',],
   $production: {
     routeRules: {
       '/**': { isr: true }
