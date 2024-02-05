@@ -39,6 +39,7 @@
             v-for="resolution in resolutions"
             :key="resolution"
             :value="resolution"
+            :selected="resolution === 'original'"
           >
             {{ resolution }}
           </option>
