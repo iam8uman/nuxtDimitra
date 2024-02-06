@@ -1,41 +1,32 @@
-```markdown
-# NUXTDimitra - Multimedia Resolution Conversion
+# NUXTDimitra - Images/Video(Multimedia) resolution conversion
 
-## Frontend
+## Frontend part
 
-**To start the frontend:**
+*To start frontend *
 
-```bash
 cd frontend
 yarn
 yarn dev
-```
 
-The frontend utilizes NUXT along with NUXTUI as a UI library. NUXTjs, a Vue framework akin to NEXTjs, powers the frontend.
+In frontend, i used NUXT along with NUXTUI as a UI library. Nuxtjs is a vue framework similar to the NEXTjs. 
 
-## Backend
+# Backend part
 
-**To start the backend:**
+*To start backend*
 
-```bash
 cd backend
 yarn
 yarn start
-```
 
-The backend comprises two APIs:
+In backend, we have two APIs, 
+1. /upload = this api handle the uploaded images(for now) to store in their respective directory accroging to their changing resolution value such as "original", "low", "high", "medium"
 
-1. **/upload:** This API manages uploaded images, storing them in directories based on their resolution values such as "original," "low," "high," and "medium."
+2. /images = this api handle all the get request from the frontend which responds all the list of multimedia list along with its number like this. Low=1, imgURL= img.jpg etc
 
-2. **/images:** This API handles all frontend GET requests, responding with a list of multimedia items, each accompanied by a unique identifier, e.g., Low=1, imgURL=img.jpg, etc.
+## Multer for file handling
+Here i used Multer package for handling file which has been uploaded from the frontend. 
 
-### Multer for File Handling
+## Sharp for changing resolution
+This npm package help to change the resolution of a image(only image). 
 
-File handling for uploads is managed using the Multer package, facilitating efficient handling of files received from the frontend.
-
-### Sharp for Resolution Conversion
-
-The Sharp npm package is employed to alter the resolution of images exclusively. Note that for videos, only resolution downgrading is supported. Although Cloudinary was initially considered for multimedia handling, due to time constraints, it was not implemented.
-
-Feel free to enhance the functionality by incorporating image uploads! Strive to optimize the solution to the best of your abilities.
-```
+Note: for video only we can downgrade its resolution. I was planning to use cloudinary for all the multimedia but due to the limited time i couldnot make it.
