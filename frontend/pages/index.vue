@@ -60,21 +60,21 @@
     </form>
 
     <div v-if="statusData" class="mt-4 mx-44">
-      <h2 class="text-4xl font-bold mb-2 first-letter:text-red-600">
+      <h2 class="text-2xl font-bold mb-2 first-letter:text-red-600">
         Status Information
       </h2>
-      <div v-for="(images, category) in statusData" :key="category">
+      <div v-for="(images, category) in statusData" :key="category" class="">
         <h3
-          class="text-3xl my-5 first-letter:text-red-600 first-letter:uppercase font-semibold mb-1"
+          class="text-sm my-5 first-letter:text-red-600 first-letter:uppercase font-semibold mb-1"
         >
           {{ category }}
         </h3>
-        <ul v-if="images.length > 0" class="flex flex-wrap gap-5">
-          <li v-for="image in images" :key="image.url">
-            <img :src="image.url" alt="Image" width="100" height="100" />
+        <ol v-if="images.length > 0" class="flex flex-wrap flex-row gap-5">
+          <li v-for="image in images" :key="image.url" class="text-xs">
+            <!-- <img :src="image.url" alt="Image" width="100" height="100" /> -->
             {{ image.url }}
           </li>
-        </ul>
+        </ol>
         <p v-else>No images in this category.</p>
       </div>
       <p v-if="Object.keys(statusData).length === 0">
