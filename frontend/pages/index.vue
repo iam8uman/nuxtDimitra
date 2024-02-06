@@ -71,8 +71,7 @@
         </h3>
         <ol v-if="images.length > 0" class="flex flex-wrap flex-row gap-5">
           <li v-for="image in images" :key="image.url" class="text-xs">
-            <!-- <img :src="image.url" alt="Image" width="100" height="100" /> -->
-            {{ image.url }}
+            <img :src="image.url" alt="Image" width="100" height="100" /> 
           </li>
         </ol>
         <p v-else>No images in this category.</p>

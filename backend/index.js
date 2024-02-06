@@ -8,6 +8,7 @@ const cors = require("cors");
 const app = express();
 const port = 8080;
 app.use(cors());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Define the storage for multer
 const storage = multer.memoryStorage();
@@ -35,10 +36,10 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     }
 
     console.log("1");
-    const { buffer,mimetype } = req.file;
+    const { buffer, mimetype } = req.file;
     const { resolution } = req.body;
-    console.log(buffer)
-    console.log(resolution)
+    console.log(buffer);
+    console.log(resolution);
 
     // Resize the image using Sharp library based on the selected resolution
     const resizedBuffer = await sharp(buffer)
@@ -48,8 +49,8 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     // Determine the category based on the selected resolution
     const category = resolution.toLowerCase();
 
-     // Determine the file extension based on the MIME type
-     const fileExtension = mimetype.split("/")[1];
+    // Determine the file extension based on the MIME type
+    const fileExtension = mimetype.split("/")[1];
 
     // Create the category directory if not exists
     const categoryPath = path.join(__dirname, "uploads", category);
