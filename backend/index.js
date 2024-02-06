@@ -37,6 +37,8 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     console.log("1");
     const { buffer } = req.file;
     const { resolution } = req.body;
+    console.log(buffer)
+    console.log(resolution)
 
     // Resize the image using Sharp library based on the selected resolution
     const resizedBuffer = await sharp(buffer)
