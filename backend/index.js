@@ -35,7 +35,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     }
 
     console.log("1");
-    const { buffer } = req.file;
+    const { buffer,mimetype } = req.file;
     const { resolution } = req.body;
     console.log(buffer)
     console.log(resolution)
@@ -48,6 +48,9 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     // Determine the category based on the selected resolution
     const category = resolution.toLowerCase();
 
+     // Determine the file extension based on the MIME type
+     const fileExtension = mimetype.split("/")[1];
+
     // Create the category directory if not exists
     const categoryPath = path.join(__dirname, "uploads", category);
     if (!fs.existsSync(categoryPath)) {
@@ -56,7 +59,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
     // Save the resized image in the appropriate directory
     // const savePath = path.join(categoryPath, `${Date.now()}.jpg`);
-    const savePath = path.join(categoryPath, `${Date.now()}.mpeg`);
+    const savePath = path.join(categoryPath, `${Date.now()}.${fileExtension}`);
     fs.writeFileSync(savePath, resizedBuffer);
 
     res.status(200).json({ success: true });
